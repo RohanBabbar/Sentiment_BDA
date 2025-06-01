@@ -1,32 +1,11 @@
-[0m[[0m[31merror[0m] [0m[0m/Users/rohan/Documents/Sem_6/BDA/social_sentiment_project/src/main/scala/TweetFetcher.scala:1:8: not found: object sttp[0m
-[0m[[0m[31merror[0m] [0m[0mimport sttp.client3._[0m
-[0m[[0m[31merror[0m] [0m[0m       ^[0m
-[0m[[0m[31merror[0m] [0m[0m/Users/rohan/Documents/Sem_6/BDA/social_sentiment_project/src/main/scala/TweetFetcher.scala:2:8: not found: object sttp[0m
-[0m[[0m[31merror[0m] [0m[0mimport sttp.model.Uri[0m
-[0m[[0m[31merror[0m] [0m[0m       ^[0m
-[0m[[0m[31merror[0m] [0m[0m/Users/rohan/Documents/Sem_6/BDA/social_sentiment_project/src/main/scala/TweetFetcher.scala:4:19: object tototoshi is not a member of package com.github[0m
-[0m[[0m[31merror[0m] [0m[0mimport com.github.tototoshi.csv._[0m
-[0m[[0m[31merror[0m] [0m[0m                  ^[0m
 [0m[[0m[31merror[0m] [0m[0m/Users/rohan/Documents/Sem_6/BDA/social_sentiment_project/src/main/scala/TweetFetcher.scala:5:27: object json is not a member of package scala.util.parsing[0m
 [0m[[0m[31merror[0m] [0m[0mimport scala.util.parsing.json.JSON[0m
 [0m[[0m[31merror[0m] [0m[0m                          ^[0m
-[0m[[0m[31merror[0m] [0m[0m/Users/rohan/Documents/Sem_6/BDA/social_sentiment_project/src/main/scala/TweetFetcher.scala:15:15: value uri is not a member of StringContext[0m
-[0m[[0m[31merror[0m] [0m[0m    val url = uri"https://api.twitter.com/2/tweets/search/recent?query=${query}&max_results=$maxResults&tweet.fields=created_at,lang"[0m
-[0m[[0m[31merror[0m] [0m[0m              ^[0m
-[0m[[0m[31merror[0m] [0m[0m/Users/rohan/Documents/Sem_6/BDA/social_sentiment_project/src/main/scala/TweetFetcher.scala:17:19: not found: value HttpURLConnectionBackend[0m
-[0m[[0m[31merror[0m] [0m[0m    val backend = HttpURLConnectionBackend()[0m
-[0m[[0m[31merror[0m] [0m[0m                  ^[0m
-[0m[[0m[31merror[0m] [0m[0m/Users/rohan/Documents/Sem_6/BDA/social_sentiment_project/src/main/scala/TweetFetcher.scala:18:19: not found: value basicRequest[0m
-[0m[[0m[31merror[0m] [0m[0m    val request = basicRequest[0m
-[0m[[0m[31merror[0m] [0m[0m                  ^[0m
 [0m[[0m[31merror[0m] [0m[0m/Users/rohan/Documents/Sem_6/BDA/social_sentiment_project/src/main/scala/TweetFetcher.scala:26:22: not found: value JSON[0m
 [0m[[0m[31merror[0m] [0m[0m        val parsed = JSON.parseFull(jsonString)[0m
 [0m[[0m[31merror[0m] [0m[0m                     ^[0m
-[0m[[0m[31merror[0m] [0m[0m/Users/rohan/Documents/Sem_6/BDA/social_sentiment_project/src/main/scala/TweetFetcher.scala:42:18: not found: value CSVWriter[0m
-[0m[[0m[31merror[0m] [0m[0m    val writer = CSVWriter.open(file)[0m
-[0m[[0m[31merror[0m] [0m[0m                 ^[0m
-[0m[[0m[33mwarn[0m] [0m[0m/Users/rohan/Documents/Sem_6/BDA/social_sentiment_project/src/main/scala/TweetFetcher.scala:28:30: non-variable type argument String in type pattern scala.collection.immutable.Map[String,Any] (the underlying of Map[String,Any]) is unchecked since it is eliminated by erasure[0m
+[0m[[0m[33mwarn[0m] [0m[0m/Users/rohan/Documents/Sem_6/BDA/social_sentiment_project/src/main/scala/TweetFetcher.scala:28:30: the type test for pattern scala.collection.immutable.Map[String,Any] (the underlying of Map[String,Any]) cannot be checked at runtime because it has type parameters eliminated by erasure[0m
 [0m[[0m[33mwarn[0m] [0m[0m          case Some(jsonMap: Map[String, Any]) =>[0m
 [0m[[0m[33mwarn[0m] [0m[0m                             ^[0m
 [0m[[0m[33mwarn[0m] [0m[0mone warning found[0m
-[0m[[0m[31merror[0m] [0m[0m9 errors found[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m

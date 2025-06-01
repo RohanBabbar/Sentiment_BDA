@@ -22,8 +22,8 @@ filtered_df = df[df['sentiment'] == sentiment]
 
 if len(filtered_df) >= 5:
     st.write("Available columns:", filtered_df.columns.tolist())
-    st.write(filtered_df.sample(5)[['cleaned_text']])
+    st.write(filtered_df.sample(5)[['clean_text']])
 else:
     
-    st.write(filtered_df[['cleaned_text']])
+    st.write(filtered_df[['clean_text']])
     st.info(f"Only {len(filtered_df)} posts found for sentiment: {sentiment}")
