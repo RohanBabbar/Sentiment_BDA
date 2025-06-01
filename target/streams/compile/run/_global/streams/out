@@ -1,0 +1,34 @@
+[0m[[0m[31merror[0m] [0m[0mcom.mongodb.spark.sql.connector.exceptions.ConfigException: Missing configuration for: database[0m
+[0m[[0m[31merror[0m] [0m[0m	at com.mongodb.spark.sql.connector.assertions.Assertions.validateConfig(Assertions.java:68)[0m
+[0m[[0m[31merror[0m] [0m[0m	at com.mongodb.spark.sql.connector.config.AbstractMongoConfig.getDatabaseName(AbstractMongoConfig.java:103)[0m
+[0m[[0m[31merror[0m] [0m[0m	at com.mongodb.spark.sql.connector.config.ReadConfig.getDatabaseName(ReadConfig.java:45)[0m
+[0m[[0m[31merror[0m] [0m[0m	at com.mongodb.spark.sql.connector.config.AbstractMongoConfig.withCollection(AbstractMongoConfig.java:165)[0m
+[0m[[0m[31merror[0m] [0m[0m	at com.mongodb.spark.sql.connector.config.ReadConfig.withCollection(ReadConfig.java:45)[0m
+[0m[[0m[31merror[0m] [0m[0m	at com.mongodb.spark.sql.connector.schema.InferSchema.inferSchema(InferSchema.java:79)[0m
+[0m[[0m[31merror[0m] [0m[0m	at com.mongodb.spark.sql.connector.MongoTableProvider.inferSchema(MongoTableProvider.java:60)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.execution.datasources.v2.DataSourceV2Utils$.getTableFromProvider(DataSourceV2Utils.scala:90)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.execution.datasources.v2.DataSourceV2Utils$.loadV2Source(DataSourceV2Utils.scala:140)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.DataFrameReader.$anonfun$load$1(DataFrameReader.scala:210)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.Option.flatMap(Option.scala:283)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:208)[0m
+[0m[[0m[31merror[0m] [0m[0m	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:172)[0m
+[0m[[0m[31merror[0m] [0m[0m	at Preprocess$.main(Preprocess.scala:13)[0m
+[0m[[0m[31merror[0m] [0m[0m	at Preprocess.main(Preprocess.scala)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.lang.reflect.Method.invoke(Method.java:498)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Run.invokeMain(Run.scala:135)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Run.execute$1(Run.scala:85)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Run.$anonfun$runWithLoader$5(Run.scala:112)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Run$.executeSuccess(Run.scala:178)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Run.runWithLoader(Run.scala:112)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Defaults$.$anonfun$bgRunTask$6(Defaults.scala:2091)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Defaults$.$anonfun$termWrapper$2(Defaults.scala:2030)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.util.Try$.apply(Try.scala:213)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.BackgroundThreadPool$BackgroundRunnable.run(DefaultBackgroundJobService.scala:378)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.lang.Thread.run(Thread.java:750)[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mrun[0m) com.mongodb.spark.sql.connector.exceptions.ConfigException: Missing configuration for: database[0m

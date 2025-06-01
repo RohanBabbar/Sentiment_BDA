@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "text": "I love the new social media app!",
+        "user": "user1",
+        "timestamp": "2025-05-30T10:00:00Z"
+    },
+    {
+        "id": 2,
+        "text": "Not happy with the recent update.",
+        "user": "user2",
+        "timestamp": "2025-05-30T11:00:00Z"
+    }
+]
