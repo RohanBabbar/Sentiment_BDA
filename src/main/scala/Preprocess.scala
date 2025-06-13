@@ -1,5 +1,6 @@
 import scala.io.Source
-import java.io.FileWriter
+import org.mongodb.scala._
+import org.mongodb.scala.bson.collection.mutable.Document
 import com.github.tototoshi.csv._
 import scala.util.matching.Regex
 
@@ -22,23 +23,34 @@ object PreprocessTweets {
 
   def main(args: Array[String]): Unit = {
     val inputPath = "fetched_tweets.csv"
-    val outputPath = "cleaned_tweets.csv"
-
     val reader = CSVReader.open(inputPath)
-    val writer = CSVWriter.open(new FileWriter(outputPath))
-    
-    val allRows = reader.allWithHeaders()
-    writer.writeRow(List("id", "clean_text"))
 
-    for (row <- allRows.take(100)) {  // limit to 100 tweets as per your quota
+    val mongoClient: MongoClient = MongoClient("mongodb://localhost:27017")
+    val database: MongoDatabase = mongoClient.getDatabase("social")
+    val collection: MongoCollection[Document] = database.getCollection("tweets")
+
+    val allRows = reader.allWithHeaders()
+
+    println("🧹 Preprocessing and inserting tweets into MongoDB...")
+
+    for (row <- allRows.take(100)) {
       val id = row.getOrElse("id", "")
       val rawText = row.getOrElse("text", "")
-      val cleaned = cleanText(rawText)
-      writer.writeRow(List(id, cleaned))
+      val cleanedText = cleanText(rawText)
+
+      val doc = Document("id" -> id, "text" -> cleanedText)
+      collection.insertOne(doc).results()
     }
 
     reader.close()
-    writer.close()
-    println("✅ Preprocessing complete: cleaned_tweets.csv generated.")
+    mongoClient.close()
+    println("✅ Preprocessing complete: tweets inserted into MongoDB collection `social.tweets`.")
+  }
+
+  // Helper extension for blocking insert
+  implicit class DocumentObservable[C](val observable: Observable[C]) {
+    import scala.concurrent.Await
+    import scala.concurrent.duration._
+    def results(): Seq[C] = Await.result(observable.toFuture(), 10.seconds)
   }
 }

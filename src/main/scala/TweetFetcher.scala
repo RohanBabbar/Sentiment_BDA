@@ -1,12 +1,17 @@
 import sttp.client3._
 import sttp.model.Uri
-import java.io.FileWriter
+import org.mongodb.scala._
+import org.mongodb.scala.model.Filters._
+import org.mongodb.scala.model.Updates._
 import com.github.tototoshi.csv._
 import play.api.libs.json._
+import scala.concurrent.Await
+import scala.concurrent.duration._
+import scala.concurrent.ExecutionContext.Implicits.global
 
 object TweetFetcher {
 
-  val BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAANOR2AEAAAAAO2D3AfK2euo7nfeY0FfDmaFnC5k%3D0Zp5U1MgXWaPZXL1h67d1OKoiMry56Y7LZydZZQu0Y70WNEQ4a"  // Replace with your actual token
+  val BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAANOR2AEAAAAAO2D3AfK2euo7nfeY0FfDmaFnC5k%3D0Zp5U1MgXWaPZXL1h67d1OKoiMry56Y7LZydZZQu0Y70WNEQ4a" 
 
   def main(args: Array[String]): Unit = {
     val query = "AI OR machine learning OR data science"
@@ -36,7 +41,8 @@ object TweetFetcher {
                 "text" -> (tweet \ "text").asOpt[String].getOrElse("")
               )
             }
-            saveToCSV(formattedTweets)
+            saveToMongo(formattedTweets)
+
           case None =>
             println("No tweets found or JSON format incorrect.")
         }
@@ -44,22 +50,25 @@ object TweetFetcher {
       case Left(error) =>
         println(s"Request failed: $error")
     }
-  }
+  } // <-- this was missing
 
-  def saveToCSV(tweets: List[Map[String, String]]): Unit = {
-    val file = new FileWriter("fetched_tweets.csv")
-    val writer = CSVWriter.open(file)
-    writer.writeRow(List("id", "created_at", "lang", "text"))
+  def saveToMongo(tweets: List[Map[String, String]]): Unit = {
+    val mongoClient: MongoClient = MongoClient() // Default localhost:27017
+    val database: MongoDatabase = mongoClient.getDatabase("twitterDB")
+    val collection: MongoCollection[Document] = database.getCollection("tweets")
 
-    tweets.foreach { tweet =>
-      val id = tweet("id")
-      val createdAt = tweet("created_at")
-      val lang = tweet("lang")
-      val text = tweet("text").replaceAll("\n", " ").replaceAll("\"", "'")
-      writer.writeRow(List(id, createdAt, lang, text))
+    val documents = tweets.map { tweet =>
+      Document(
+        "id" -> tweet("id"),
+        "created_at" -> tweet("created_at"),
+        "lang" -> tweet("lang"),
+        "text" -> tweet("text").replaceAll("\n", " ").replaceAll("\"", "'")
+      )
     }
 
-    writer.close()
-    println("✅ Tweets saved to fetched_tweets.csv")
+    
+      val insertFuture = collection.insertMany(documents).toFuture()
+      Await.result(insertFuture, 10.seconds)
+      println("✅ Tweet batch inserted to MongoDB")
   }
 }

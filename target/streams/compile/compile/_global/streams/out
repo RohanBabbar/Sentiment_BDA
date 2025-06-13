@@ -1,11 +1,10 @@
-[0m[[0m[31merror[0m] [0m[0m/Users/rohan/Documents/Sem_6/BDA/social_sentiment_project/src/main/scala/TweetFetcher.scala:5:27: object json is not a member of package scala.util.parsing[0m
-[0m[[0m[31merror[0m] [0m[0mimport scala.util.parsing.json.JSON[0m
-[0m[[0m[31merror[0m] [0m[0m                          ^[0m
-[0m[[0m[31merror[0m] [0m[0m/Users/rohan/Documents/Sem_6/BDA/social_sentiment_project/src/main/scala/TweetFetcher.scala:26:22: not found: value JSON[0m
-[0m[[0m[31merror[0m] [0m[0m        val parsed = JSON.parseFull(jsonString)[0m
-[0m[[0m[31merror[0m] [0m[0m                     ^[0m
-[0m[[0m[33mwarn[0m] [0m[0m/Users/rohan/Documents/Sem_6/BDA/social_sentiment_project/src/main/scala/TweetFetcher.scala:28:30: the type test for pattern scala.collection.immutable.Map[String,Any] (the underlying of Map[String,Any]) cannot be checked at runtime because it has type parameters eliminated by erasure[0m
-[0m[[0m[33mwarn[0m] [0m[0m          case Some(jsonMap: Map[String, Any]) =>[0m
-[0m[[0m[33mwarn[0m] [0m[0m                             ^[0m
-[0m[[0m[33mwarn[0m] [0m[0mone warning found[0m
-[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/rohan/Documents/Sem_6/BDA/social_sentiment_project/src/main/scala/TweetFetcher.scala:8:8: object Completed is not a member of package org.mongodb.scala[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.mongodb.scala.Completed[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/rohan/Documents/Sem_6/BDA/social_sentiment_project/src/main/scala/TweetFetcher.scala:67:61: not found: type Completed[0m
+[0m[[0m[31merror[0m] [0m[0m    collection.insertMany(documents).subscribe(new Observer[Completed] {[0m
+[0m[[0m[31merror[0m] [0m[0m                                                            ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/rohan/Documents/Sem_6/BDA/social_sentiment_project/src/main/scala/TweetFetcher.scala:68:35: not found: type Completed[0m
+[0m[[0m[31merror[0m] [0m[0m      override def onNext(result: Completed): Unit = println("✅ Tweet batch inserted to MongoDB")[0m
+[0m[[0m[31merror[0m] [0m[0m                                  ^[0m
+[0m[[0m[31merror[0m] [0m[0mthree errors found[0m

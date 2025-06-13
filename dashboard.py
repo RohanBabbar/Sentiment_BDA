@@ -19,11 +19,11 @@ st.pyplot(fig)
 st.subheader("Sample Tweets by Sentiment")
 sentiment = st.selectbox("Choose sentiment:", df['sentiment'].unique())
 filtered_df = df[df['sentiment'] == sentiment]
-
+print(filtered_df.columns)
 if len(filtered_df) >= 5:
     st.write("Available columns:", filtered_df.columns.tolist())
-    st.write(filtered_df.sample(5)[['clean_text']])
+    st.write(filtered_df.sample(5)[['text']])
 else:
     
-    st.write(filtered_df[['clean_text']])
+    st.write(filtered_df[['text']])
     st.info(f"Only {len(filtered_df)} posts found for sentiment: {sentiment}")
